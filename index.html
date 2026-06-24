@@ -6,7 +6,6 @@
     <title>YWS Solar • Simulador Solar Inteligente | Goiás</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600&display=swap');
         
@@ -89,7 +88,7 @@
                 </div>
                 
                 <div class="flex items-center gap-x-3">
-                    <a href="https://wa.me/5562991758807?text=Olá%20YWS!%20Quero%20falar%20com%20um%20especialista%20sobre%20energia%20solar." 
+                    <a href="https://wa.me/5562991758807?text=Ol%C3%A1%20YWS!%20Quero%20falar%20com%20um%20especialista%20sobre%20energia%20solar." 
                        target="_blank"
                        class="hidden sm:flex items-center gap-x-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 transition-all text-white text-sm font-semibold rounded-3xl shadow-sm">
                         <i class="fa-brands fa-whatsapp mr-1.5"></i>
@@ -100,329 +99,273 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <div class="max-w-screen-xl mx-auto px-6 pt-10 pb-8">
-        <div class="text-center max-w-3xl mx-auto">
-            <div class="inline-flex items-center gap-x-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-3xl text-sm font-semibold mb-5">
-                <i class="fa-solid fa-map-marker-alt"></i>
-                <span>Goiás • Condições reais de irradiação</span>
+    <div class="max-w-screen-xl mx-auto px-6 py-8">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-x-2 bg-white px-4 py-1.5 rounded-3xl shadow-sm border border-slate-200 mb-4">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="text-sm font-semibold text-slate-700">Simulador com dados reais de Goiás • 2026</span>
             </div>
-            
-            <h1 class="text-5xl md:text-6xl leading-[1.05] font-bold tracking-tighter mb-4">
-                Simulador Solar<br> 
-                <span class="bg-gradient-to-r from-blue-700 to-blue-600 bg-clip-text text-transparent">inteligente</span>
-            </h1>
-            
-            <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-                Coloque seu consumo mensal e veja na hora a potência ideal + escolha do painel ideal para você.
-            </p>
-            
-            <button onclick="document.getElementById('simulador').scrollIntoView({ behavior: 'smooth' })" 
-                    class="px-8 py-4 bg-blue-700 hover:bg-blue-800 transition-all text-white font-semibold rounded-3xl flex items-center gap-x-3 shadow-lg shadow-blue-700/30 text-lg mx-auto">
-                <span>Começar simulação agora</span>
-                <i class="fa-solid fa-arrow-down"></i>
-            </button>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-slate-900">Simule seu sistema solar</h1>
+            <p class="mt-3 text-lg text-slate-600 max-w-md mx-auto">Descubra quanto você pode economizar com energia solar + limpeza profissional YWS</p>
         </div>
-    </div>
 
-    <!-- SIMULADOR -->
-    <div id="simulador" class="max-w-screen-xl mx-auto px-6 pb-16">
-        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             
-            <!-- Header do Simulador -->
-            <div class="bg-gradient-to-r from-blue-700 to-blue-600 px-8 py-6 text-white">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-2xl font-bold">Simulador Solar YWS</h2>
-                        <p class="text-blue-100 text-sm mt-1">Resultados com condições reais de Goiás • Atualizado 2026</p>
-                    </div>
-                    <div class="hidden md:block text-right">
-                        <div class="text-xs text-blue-200">Número oficial</div>
-                        <div class="font-mono text-lg font-semibold">(62) 99175-8807</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-8">
+            <!-- COLUNA ESQUERDA: INPUTS -->
+            <div class="lg:col-span-7 bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
                 
-                <!-- PASSO 1: CONSUMO -->
+                <!-- CONSUMO -->
                 <div class="mb-8">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center font-bold text-sm">1</div>
+                    <div class="flex items-center justify-between mb-3">
                         <div>
-                            <span class="font-semibold text-lg">Qual é o seu consumo mensal de energia?</span>
-                            <span class="text-sm text-slate-500 ml-2">(kWh da conta de luz)</span>
+                            <label class="block text-sm font-semibold text-slate-700">Consumo mensal da conta de luz</label>
+                            <span class="text-xs text-slate-500">Coloque o valor que aparece na sua conta</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-emerald-600 font-medium">kWh/mês</span>
                         </div>
                     </div>
                     
-                    <div class="max-w-md">
-                        <div class="relative">
-                            <input id="consumo" type="number" value="380" 
-                                   class="form-input w-full text-4xl font-semibold px-6 py-5 border-2 border-slate-300 rounded-3xl focus:border-amber-500"
-                                   oninput="calcularTudoAutomatico()">
-                            <div class="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-xl">kWh/mês</div>
+                    <div class="flex items-center gap-x-3">
+                        <div class="flex-1 relative">
+                            <input type="number" id="consumo" value="380" 
+                                   class="form-input w-full text-3xl font-bold border border-slate-300 focus:border-amber-500 rounded-2xl px-6 py-4"
+                                   placeholder="Ex: 380">
                         </div>
-                        <p class="text-xs text-slate-500 mt-2 ml-1">Ex: 380 kWh = casa média • 650 kWh = casa grande • 1200 kWh = comércios</p>
-                    </div>
-                </div>
-
-                <!-- PASSO 2: POTÊNCIA RECOMENDADA (AUTOMÁTICA) -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center font-bold text-sm">2</div>
-                        <div>
-                            <span class="font-semibold text-lg">Potência recomendada do sistema</span>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
-                        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                            <div>
-                                <div class="text-sm text-slate-500 mb-1">O sistema recomenda para você:</div>
-                                <div class="flex items-baseline gap-x-2">
-                                    <span id="potencia-recomendada" class="font-mono text-6xl font-bold text-blue-700">6.8</span>
-                                    <span class="text-2xl font-semibold text-slate-600">kWp</span>
-                                </div>
-                                <div class="text-sm text-emerald-600 font-medium mt-1 flex items-center gap-x-1">
-                                    <i class="fa-solid fa-check-circle"></i>
-                                    <span>Recomendação automática baseada no seu consumo</span>
-                                </div>
-                            </div>
-                            
-                            <div class="text-sm text-slate-600 max-w-xs">
-                                <strong>Como calculamos:</strong><br>
-                                Consumo × Cobertura desejada ÷ (Irradiação de Goiás × Performance)
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4 pt-4 border-t border-slate-200 flex items-center gap-x-4 text-sm">
-                            <button onclick="ajustarPotenciaManual()" 
-                                    class="px-4 py-2 text-sm border border-slate-300 hover:bg-white rounded-2xl flex items-center gap-x-2 text-slate-600">
-                                <i class="fa-solid fa-edit"></i>
-                                <span>Quero ajustar manualmente</span>
-                            </button>
-                            <div id="info-potencia" class="text-xs text-slate-500"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PASSO 3: ESCOLHA DO PAINEL -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center font-bold text-sm">3</div>
-                        <div>
-                            <span class="font-semibold text-lg">Escolha o modelo do painel solar</span>
-                            <span class="text-sm text-slate-500 ml-2">(570W a 630W)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="painel-cards">
-                        <!-- Cards gerados via JS -->
-                    </div>
-                    <p class="text-xs text-slate-500 mt-2 ml-1">Painéis de alta eficiência • Garantia 25 anos • Mais comuns no mercado goiano</p>
-                </div>
-
-                <!-- PASSO 4: QUANTIDADE DE PAINÉIS -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center font-bold text-sm">4</div>
-                        <div>
-                            <span class="font-semibold text-lg">Quantos painéis você quer instalar?</span>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white border border-slate-200 rounded-3xl p-6">
-                        <div class="flex flex-col md:flex-row gap-6 items-center">
-                            <!-- Slider -->
-                            <div class="flex-1 w-full">
-                                <div class="flex justify-between text-sm mb-2 text-slate-600">
-                                    <span>Menos painéis</span>
-                                    <span>Mais painéis</span>
-                                </div>
-                                <input type="range" id="quantidade-slider" 
-                                       class="w-full accent-amber-500" 
-                                       min="4" max="1000" step="1" value="12"
-                                       oninput="atualizarQuantidadePeloSlider()">
-                                <div class="flex justify-between text-xs text-slate-400 mt-1">
-                                    <span>4</span>
-                                    <span>1000</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Input numérico -->
-                            <div class="w-full md:w-48">
-                                <label class="text-sm text-slate-600 block mb-1.5">Quantidade exata</label>
-                                <div class="flex items-center gap-x-2">
-                                    <input type="number" id="quantidade-input" value="12" 
-                                           class="form-input w-24 text-center text-2xl font-semibold border-2 border-slate-300 rounded-2xl py-2"
-                                           oninput="atualizarQuantidadePeloInput()">
-                                    <span class="text-slate-500">painéis</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4 text-sm text-emerald-700 bg-emerald-50 px-4 py-2 rounded-2xl inline-flex items-center gap-x-2">
-                            <i class="fa-solid fa-info-circle"></i>
-                            <span id="info-quantidade">Sistema com 12 painéis de 600W = 7.2 kWp</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONDIÇÕES REAIS (simplificado) -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center font-bold text-sm">5</div>
-                        <div>
-                            <span class="font-semibold text-lg">Condição da sua instalação</span>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <div onclick="selecionarCondicao(0, this)" class="preset-card cursor-pointer bg-white border-2 border-emerald-500 rounded-2xl p-4 active">
-                            <div class="flex items-center gap-x-2 mb-2">
-                                <i class="fa-solid fa-check-circle text-emerald-500"></i>
-                                <span class="font-semibold text-emerald-700">Pós-Limpeza YWS</span>
-                            </div>
-                            <div class="text-xs text-slate-600">Máxima eficiência (+25~32% de ganho)</div>
-                        </div>
-                        
-                        <div onclick="selecionarCondicao(1, this)" class="preset-card cursor-pointer bg-white border border-slate-200 rounded-2xl p-4">
-                            <div class="font-semibold mb-1">Residencial Padrão</div>
-                            <div class="text-xs text-slate-600">Goiânia e região • sujeira moderada</div>
-                        </div>
-                        
-                        <div onclick="selecionarCondicao(2, this)" class="preset-card cursor-pointer bg-white border border-slate-200 rounded-2xl p-4">
-                            <div class="font-semibold mb-1">Comercial / Industrial</div>
-                            <div class="text-xs text-slate-600">Telhado metálico • poeira baixa</div>
-                        </div>
-                        
-                        <div onclick="selecionarCondicao(3, this)" class="preset-card cursor-pointer bg-white border border-slate-200 rounded-2xl p-4">
-                            <div class="font-semibold mb-1">Rural / Agrícola</div>
-                            <div class="text-xs text-slate-600">Alto acúmulo de poeira e folhas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RESULTADOS -->
-                <div id="resultados" class="bg-slate-900 text-white rounded-3xl p-8">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <span class="text-emerald-400 text-sm font-semibold tracking-wider">RESULTADO DA SIMULAÇÃO</span>
-                            <h3 class="text-2xl font-bold">Seu sistema ideal</h3>
-                        </div>
-                        <button onclick="enviarWhatsApp()" 
-                                class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 transition-all rounded-3xl flex items-center gap-x-2 font-semibold text-sm">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Enviar para WhatsApp</span>
+                        <button onclick="calcularTudoAutomatico()" 
+                                class="px-6 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2 transition-all active:scale-[0.985]">
+                            <i class="fa-solid fa-sync-alt"></i>
+                            <span>Recalcular</span>
                         </button>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        
-                        <!-- Métricas principais -->
-                        <div class="bg-white/10 rounded-2xl p-5">
-                            <div class="text-emerald-400 text-xs font-medium mb-1">GERAÇÃO MENSAL</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span id="geracao-mensal" class="result-value text-4xl font-bold">920</span>
-                                <span class="text-lg text-white/70">kWh</span>
+                <!-- POTÊNCIA RECOMENDADA -->
+                <div class="mb-8 bg-gradient-to-br from-amber-50 to-white border border-amber-200 rounded-2xl p-5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-xs font-semibold text-amber-600 tracking-wider">POTÊNCIA RECOMENDADA DO SISTEMA</div>
+                            <div class="flex items-baseline gap-x-1 mt-1">
+                                <span id="potencia-recomendada" class="text-5xl font-bold text-amber-600">6.8</span>
+                                <span class="text-xl text-amber-600 font-medium">kWp</span>
                             </div>
-                            <div class="text-xs text-white/60 mt-1">com os painéis escolhidos</div>
+                            <div id="info-potencia" class="text-xs text-amber-700 mt-0.5">Baseado no seu consumo × 95% de cobertura</div>
                         </div>
-                        
-                        <div class="bg-white/10 rounded-2xl p-5">
-                            <div class="text-emerald-400 text-xs font-medium mb-1">ECONOMIA MENSAL</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span class="text-lg text-white/70">R$</span>
-                                <span id="economia-mensal" class="result-value text-4xl font-bold text-emerald-400">845</span>
-                            </div>
-                            <div class="text-xs text-white/60 mt-1">na conta de luz</div>
-                        </div>
-                        
-                        <div class="bg-white/10 rounded-2xl p-5">
-                            <div class="text-emerald-400 text-xs font-medium mb-1">PAYBACK</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span id="payback" class="result-value text-4xl font-bold">4.2</span>
-                                <span class="text-lg text-white/70">anos</span>
-                            </div>
-                            <div class="text-xs text-white/60 mt-1">retorno do investimento</div>
-                        </div>
-                        
-                        <div class="bg-white/10 rounded-2xl p-5">
-                            <div class="text-emerald-400 text-xs font-medium mb-1">POTÊNCIA TOTAL</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span id="potencia-total" class="result-value text-4xl font-bold">7.2</span>
-                                <span class="text-lg text-white/70">kWp</span>
-                            </div>
-                            <div class="text-xs text-white/60 mt-1" id="info-paineis">12 painéis de 600W</div>
-                        </div>
-                    </div>
-
-                    <!-- VALOR PAGO NA ENERGIA (antes x depois) -->
-                    <div class="mt-6 pt-6 border-t border-white/20 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-white/5 rounded-2xl p-5">
-                            <div class="text-xs text-white/60 mb-1">VALOR QUE VOCÊ PAGA HOJE NA ENERGIA</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span class="text-3xl font-bold">R$ <span id="valor-atual">418</span></span>
-                            </div>
-                            <div class="text-xs text-white/50">Conta atual (sem energia solar)</div>
-                        </div>
-                        
-                        <div class="bg-emerald-500/20 border border-emerald-400/30 rounded-2xl p-5">
-                            <div class="text-xs text-emerald-300 mb-1">NOVO VALOR ESTIMADO NA CONTA</div>
-                            <div class="flex items-baseline gap-x-1">
-                                <span class="text-3xl font-bold text-emerald-400">R$ <span id="valor-novo">85</span></span>
-                            </div>
-                            <div class="text-xs text-emerald-300">Após instalar o sistema solar</div>
-                        </div>
+                        <button onclick="ajustarPotenciaManual()" 
+                                class="text-xs px-4 py-2 bg-white border border-amber-300 hover:bg-amber-50 rounded-2xl text-amber-700 font-medium flex items-center gap-x-1.5">
+                            <i class="fa-solid fa-edit text-xs"></i>
+                            <span>Ajustar manual</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="text-center mt-6 text-xs text-slate-500">
-                    Simulação com dados reais do Atlas Brasileiro de Energia Solar + INMET • Tarifa média Goiás 2026: R$ 0,92/kWh
+                <!-- ESCOLHA DO PAINEL -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="block text-sm font-semibold text-slate-700">Escolha o modelo do painel solar</label>
+                        <span class="text-xs text-emerald-600 font-medium">Preços promocionais YWS (−40%)</span>
+                    </div>
+                    
+                    <div id="painel-cards" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                        <!-- Cards gerados via JS -->
+                    </div>
+                </div>
+
+                <!-- QUANTIDADE DE PAINÉIS -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="block text-sm font-semibold text-slate-700">Quantidade de painéis</label>
+                        <span class="text-xs text-slate-500">Mínimo 4 • Máximo 1000</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-x-4">
+                        <!-- Slider -->
+                        <div class="flex-1">
+                            <input type="range" id="quantidade-slider" min="4" max="1000" step="1" value="12"
+                                   class="w-full accent-amber-500">
+                        </div>
+                        
+                        <!-- Input manual -->
+                        <div class="w-24">
+                            <input type="number" id="quantidade-input" value="12" min="4" max="1000"
+                                   class="form-input w-full text-center text-xl font-bold border border-slate-300 rounded-2xl px-4 py-3">
+                        </div>
+                    </div>
+                    <div id="info-quantidade" class="mt-2 text-xs text-slate-500"></div>
+                </div>
+
+            </div>
+
+            <!-- COLUNA DIREITA: CONDIÇÕES -->
+            <div class="lg:col-span-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+                <div class="mb-5">
+                    <label class="block text-sm font-semibold text-slate-700 mb-3">Condição do telhado / local</label>
+                    
+                    <div class="space-y-3">
+                        <!-- Pós-Limpeza YWS (padrão) -->
+                        <div onclick="selecionarCondicao(0, this)" class="preset-card active bg-emerald-50 border-emerald-300 border-2 rounded-2xl p-4 cursor-pointer flex gap-x-4 items-start">
+                            <div class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-spa text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold text-emerald-700">Pós-Limpeza Profissional YWS</div>
+                                <div class="text-xs text-emerald-600 mt-0.5">Máxima eficiência • +25~30% de geração extra</div>
+                            </div>
+                        </div>
+
+                        <div onclick="selecionarCondicao(1, this)" class="preset-card bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-4 cursor-pointer flex gap-x-4 items-start">
+                            <div class="w-9 h-9 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-home text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold">Residencial Padrão (Goiânia e região)</div>
+                                <div class="text-xs text-slate-500 mt-0.5">Telhado cerâmico ou metálico limpo</div>
+                            </div>
+                        </div>
+
+                        <div onclick="selecionarCondicao(2, this)" class="preset-card bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-4 cursor-pointer flex gap-x-4 items-start">
+                            <div class="w-9 h-9 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-industry text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold">Comercial / Industrial</div>
+                                <div class="text-xs text-slate-500 mt-0.5">Telhado metálico grande, poeira moderada</div>
+                            </div>
+                        </div>
+
+                        <div onclick="selecionarCondicao(3, this)" class="preset-card bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-4 cursor-pointer flex gap-x-4 items-start">
+                            <div class="w-9 h-9 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-tractor text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold">Rural / Agrícola</div>
+                                <div class="text-xs text-slate-500 mt-0.5">Alto acúmulo de poeira e folhas</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- RESULTADOS -->
+            <div id="resultados" class="lg:col-span-12 bg-slate-900 text-white rounded-3xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <span class="text-emerald-400 text-sm font-semibold tracking-wider">RESULTADO DA SIMULAÇÃO</span>
+                        <h3 class="text-2xl font-bold">Seu sistema ideal</h3>
+                    </div>
+                    <button onclick="enviarWhatsApp()" 
+                            class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 transition-all rounded-3xl flex items-center gap-x-2 font-semibold text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Enviar para WhatsApp</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Métricas principais -->
+                    <div class="bg-white/10 rounded-2xl p-5">
+                        <div class="text-emerald-400 text-xs font-medium mb-1">GERAÇÃO MENSAL</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span id="geracao-mensal" class="result-value text-4xl font-bold">920</span>
+                            <span class="text-lg text-white/70">kWh</span>
+                        </div>
+                        <div class="text-xs text-white/60 mt-1">com os painéis escolhidos</div>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-2xl p-5">
+                        <div class="text-emerald-400 text-xs font-medium mb-1">ECONOMIA MENSAL</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span class="text-lg text-white/70">R$</span>
+                            <span id="economia-mensal" class="result-value text-4xl font-bold text-emerald-400">845</span>
+                        </div>
+                        <div class="text-xs text-white/60 mt-1">na conta de luz</div>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-2xl p-5">
+                        <div class="text-emerald-400 text-xs font-medium mb-1">PAYBACK</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span id="payback" class="result-value text-4xl font-bold">4.2</span>
+                            <span class="text-lg text-white/70">anos</span>
+                        </div>
+                        <div class="text-xs text-white/60 mt-1">retorno do investimento</div>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-2xl p-5">
+                        <div class="text-emerald-400 text-xs font-medium mb-1">POTÊNCIA TOTAL</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span id="potencia-total" class="result-value text-4xl font-bold">7.2</span>
+                            <span class="text-lg text-white/70">kWp</span>
+                        </div>
+                        <div class="text-xs text-white/60 mt-1" id="info-paineis">12 painéis de 600W</div>
+                    </div>
+                </div>
+
+                <!-- VALOR PAGO NA ENERGIA (ANTES x DEPOIS) -->
+                <div class="mt-6 pt-6 border-t border-white/20 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white/5 rounded-2xl p-5">
+                        <div class="text-xs text-white/60 mb-1">VALOR QUE VOCÊ PAGA HOJE NA ENERGIA</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span class="text-3xl font-bold">R$ <span id="valor-atual">418</span></span>
+                        </div>
+                        <div class="text-xs text-white/50">Conta atual (sem energia solar)</div>
+                    </div>
+                    
+                    <div class="bg-emerald-500/20 border border-emerald-400/30 rounded-2xl p-5">
+                        <div class="text-xs text-emerald-300 mb-1">NOVO VALOR ESTIMADO NA CONTA</div>
+                        <div class="flex items-baseline gap-x-1">
+                            <span class="text-3xl font-bold text-emerald-400">R$ <span id="valor-novo">85</span></span>
+                        </div>
+                        <div class="text-xs text-emerald-300">Após instalar o sistema solar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="text-center mt-6 text-xs text-slate-500">
+            Simulação com dados reais do Atlas Brasileiro de Energia Solar + INMET • Tarifa média Goiás 2026: R$ 0,92/kWh
         </div>
     </div>
 
     <script>
-        // ==================== CONFIGURAÇÕES ====================
+        // ==================== ESTADO ====================
         let estado = {
             consumo: 380,
             potenciaRecomendada: 6.8,
-            painelEscolhido: 600,        // potência do painel em W
+            painelEscolhido: 600,
             quantidade: 12,
-            condicao: 0,                 // 0 = Pós-Limpeza YWS (melhor)
-            irradiacao: 5.42,            // média Goiás
-            tarifa: 0.92                 // R$/kWh
+            condicao: 0,
+            irradiacao: 5.42,
+            tarifa: 0.92
         };
 
+        // Painéis com PREÇOS 40% MAIS BARATOS (valores promocionais YWS)
         const paineisDisponiveis = [
-            { potencia: 570, eficiencia: 21.5, nome: "570W Standard" },
-            { potencia: 580, eficiencia: 22.1, nome: "580W Plus" },
-            { potencia: 600, eficiencia: 22.8, nome: "600W Premium" },
-            { potencia: 620, eficiencia: 23.2, nome: "620W High Power" },
-            { potencia: 630, eficiencia: 23.5, nome: "630W Ultra" }
+            { potencia: 570, eficiencia: 21.5, nome: "570W Standard", preco: 680 },
+            { potencia: 580, eficiencia: 22.1, nome: "580W Plus",      preco: 695 },
+            { potencia: 600, eficiencia: 22.8, nome: "600W Premium",   preco: 720 },
+            { potencia: 620, eficiencia: 23.2, nome: "620W High Power", preco: 745 },
+            { potencia: 630, eficiencia: 23.5, nome: "630W Ultra",     preco: 760 }
         ];
 
-        // ==================== FUNÇÕES PRINCIPAIS ====================
-        
+        // ==================== FUNÇÕES ====================
+
         function calcularTudoAutomatico() {
-            // Pega o consumo do input
             const consumoInput = parseFloat(document.getElementById('consumo').value) || 350;
             estado.consumo = consumoInput;
 
-            // Calcula potência recomendada automaticamente
-            const cobertura = 0.95; // 95% de cobertura
-            const pr = estado.condicao === 0 ? 0.84 : 0.78; // melhor PR após limpeza YWS
+            // Cálculo da potência recomendada (95% de cobertura)
+            const cobertura = 0.95;
+            const pr = estado.condicao === 0 ? 0.84 : 0.78;
             
-            // kWp = (consumo mensal × cobertura) / (irradiação × 30.4 × PR)
             let kWpRecomendado = (consumoInput * cobertura) / (estado.irradiacao * 30.4 * pr);
             kWpRecomendado = Math.round(kWpRecomendado * 10) / 10;
             
             estado.potenciaRecomendada = kWpRecomendado;
             
             // Atualiza display da potência recomendada
-            document.getElementById('potencia-recomendada').textContent = kWpRecomendado.toFixed(1);
+            const elPot = document.getElementById('potencia-recomendada');
+            if (elPot) elPot.textContent = kWpRecomendado.toFixed(1);
             
             // Atualiza quantidade de painéis com base no painel escolhido
             const painel = paineisDisponiveis.find(p => p.potencia === estado.painelEscolhido);
@@ -430,58 +373,63 @@
                 const qtdCalculada = Math.ceil((kWpRecomendado * 1000) / painel.potencia);
                 estado.quantidade = Math.max(4, Math.min(1000, qtdCalculada));
                 
-                // Atualiza slider e input
-                document.getElementById('quantidade-slider').value = estado.quantidade;
-                document.getElementById('quantidade-input').value = estado.quantidade;
+                const slider = document.getElementById('quantidade-slider');
+                const inputQtd = document.getElementById('quantidade-input');
+                if (slider) slider.value = estado.quantidade;
+                if (inputQtd) inputQtd.value = estado.quantidade;
             }
             
-            // Recalcula tudo
             atualizarResultados();
         }
 
         function selecionarPainel(potencia, element) {
-            // Remove active de todos
             document.querySelectorAll('#painel-cards .panel-card').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             
             estado.painelEscolhido = potencia;
             
-            // Recalcula quantidade ideal para a potência recomendada
             const painel = paineisDisponiveis.find(p => p.potencia === potencia);
             if (painel && estado.potenciaRecomendada) {
                 const qtd = Math.ceil((estado.potenciaRecomendada * 1000) / painel.potencia);
                 estado.quantidade = Math.max(4, Math.min(1000, qtd));
                 
-                document.getElementById('quantidade-slider').value = estado.quantidade;
-                document.getElementById('quantidade-input').value = estado.quantidade;
+                const slider = document.getElementById('quantidade-slider');
+                const inputQtd = document.getElementById('quantidade-input');
+                if (slider) slider.value = estado.quantidade;
+                if (inputQtd) inputQtd.value = estado.quantidade;
             }
             
             atualizarResultados();
         }
 
         function atualizarQuantidadePeloSlider() {
-            estado.quantidade = parseInt(document.getElementById('quantidade-slider').value);
-            document.getElementById('quantidade-input').value = estado.quantidade;
+            const slider = document.getElementById('quantidade-slider');
+            if (!slider) return;
+            
+            estado.quantidade = parseInt(slider.value);
+            const inputQtd = document.getElementById('quantidade-input');
+            if (inputQtd) inputQtd.value = estado.quantidade;
             atualizarResultados();
         }
 
         function atualizarQuantidadePeloInput() {
-            let qtd = parseInt(document.getElementById('quantidade-input').value) || 8;
+            const inputQtd = document.getElementById('quantidade-input');
+            if (!inputQtd) return;
+            
+            let qtd = parseInt(inputQtd.value) || 8;
             qtd = Math.max(4, Math.min(1000, qtd));
             estado.quantidade = qtd;
             
-            document.getElementById('quantidade-slider').value = qtd;
+            const slider = document.getElementById('quantidade-slider');
+            if (slider) slider.value = qtd;
             atualizarResultados();
         }
 
         function selecionarCondicao(indice, element) {
-            // Remove active de todos
             document.querySelectorAll('.preset-card').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             
             estado.condicao = indice;
-            
-            // Recalcula potência recomendada com novo PR
             calcularTudoAutomatico();
         }
 
@@ -490,50 +438,43 @@
             const qtd = estado.quantidade;
             const potenciaPainel = estado.painelEscolhido;
             
-            // Potência total do sistema
             const kWpTotal = (qtd * potenciaPainel) / 1000;
-            
-            // PR efetivo (melhor se for condição Pós-Limpeza YWS)
             const prEfetivo = estado.condicao === 0 ? 0.84 : 0.78;
             
-            // Geração mensal estimada
             const geracaoMensal = Math.round(kWpTotal * estado.irradiacao * 30.4 * prEfetivo);
-            
-            // Economia mensal (R$)
             const economiaMensal = Math.round(geracaoMensal * estado.tarifa);
-            
-            // Valor atual pago (conta cheia)
             const valorAtual = Math.round(consumo * estado.tarifa);
-            
-            // Valor novo estimado (conta após solar)
             const valorNovo = Math.max(0, Math.round(valorAtual - economiaMensal));
             
-            // Payback (custo médio R$ 4.800 / kWp)
             const custoTotal = Math.round(kWpTotal * 4800);
             const payback = custoTotal > 0 ? (custoTotal / (economiaMensal * 12)).toFixed(1) : "—";
             
             // Atualiza interface
-            document.getElementById('geracao-mensal').textContent = geracaoMensal;
-            document.getElementById('economia-mensal').textContent = economiaMensal;
-            document.getElementById('payback').textContent = payback;
-            document.getElementById('potencia-total').textContent = kWpTotal.toFixed(1);
-            document.getElementById('valor-atual').textContent = valorAtual;
-            document.getElementById('valor-novo').textContent = valorNovo;
+            const elGeracao = document.getElementById('geracao-mensal');
+            const elEconomia = document.getElementById('economia-mensal');
+            const elPayback = document.getElementById('payback');
+            const elPotencia = document.getElementById('potencia-total');
+            const elValorAtual = document.getElementById('valor-atual');
+            const elValorNovo = document.getElementById('valor-novo');
+            const elInfoPaineis = document.getElementById('info-paineis');
+            const elInfoQtd = document.getElementById('info-quantidade');
+            const elInfoPot = document.getElementById('info-potencia');
+
+            if (elGeracao) elGeracao.textContent = geracaoMensal;
+            if (elEconomia) elEconomia.textContent = economiaMensal;
+            if (elPayback) elPayback.textContent = payback;
+            if (elPotencia) elPotencia.textContent = kWpTotal.toFixed(1);
+            if (elValorAtual) elValorAtual.textContent = valorAtual;
+            if (elValorNovo) elValorNovo.textContent = valorNovo;
             
-            // Info dos painéis
-            const infoPaineis = document.getElementById('info-paineis');
-            infoPaineis.textContent = `${qtd} painéis de ${potenciaPainel}W = ${kWpTotal.toFixed(1)} kWp`;
+            if (elInfoPaineis) elInfoPaineis.textContent = `${qtd} painéis de ${potenciaPainel}W`;
             
-            // Info da quantidade
-            const infoQtd = document.getElementById('info-quantidade');
-            if (infoQtd) {
-                infoQtd.innerHTML = `Sistema com ${qtd} painéis de ${potenciaPainel}W = <strong>${kWpTotal.toFixed(1)} kWp</strong>`;
+            if (elInfoQtd) {
+                elInfoQtd.innerHTML = `Sistema com ${qtd} painéis de ${potenciaPainel}W = <strong>${kWpTotal.toFixed(1)} kWp</strong>`;
             }
             
-            // Atualiza info da potência recomendada
-            const infoPot = document.getElementById('info-potencia');
-            if (infoPot) {
-                infoPot.innerHTML = `Baseado em ${consumo} kWh × 95% cobertura`;
+            if (elInfoPot) {
+                elInfoPot.innerHTML = `Baseado em ${consumo} kWh × 95% cobertura`;
             }
         }
 
@@ -541,15 +482,18 @@
             const novaPot = prompt("Digite a potência desejada em kWp (ex: 5.5):", estado.potenciaRecomendada);
             if (novaPot && !isNaN(parseFloat(novaPot))) {
                 estado.potenciaRecomendada = parseFloat(novaPot);
-                document.getElementById('potencia-recomendada').textContent = estado.potenciaRecomendada.toFixed(1);
+                const elPot = document.getElementById('potencia-recomendada');
+                if (elPot) elPot.textContent = estado.potenciaRecomendada.toFixed(1);
                 
-                // Recalcula quantidade com base na nova potência
                 const painel = paineisDisponiveis.find(p => p.potencia === estado.painelEscolhido);
                 if (painel) {
                     const qtd = Math.ceil((estado.potenciaRecomendada * 1000) / painel.potencia);
                     estado.quantidade = Math.max(4, Math.min(1000, qtd));
-                    document.getElementById('quantidade-slider').value = estado.quantidade;
-                    document.getElementById('quantidade-input').value = estado.quantidade;
+                    
+                    const slider = document.getElementById('quantidade-slider');
+                    const inputQtd = document.getElementById('quantidade-input');
+                    if (slider) slider.value = estado.quantidade;
+                    if (inputQtd) inputQtd.value = estado.quantidade;
                 }
                 atualizarResultados();
             }
@@ -557,6 +501,7 @@
 
         function criarCardsPaineis() {
             const container = document.getElementById('painel-cards');
+            if (!container) return;
             container.innerHTML = '';
             
             paineisDisponiveis.forEach(painel => {
@@ -567,7 +512,10 @@
                     <div class="text-3xl font-bold text-slate-800 mb-1">${painel.potencia}W</div>
                     <div class="text-xs text-slate-500 mb-2">${painel.nome}</div>
                     <div class="text-emerald-600 text-xs font-medium">Eficiência ${painel.eficiencia}%</div>
-                    <div class="mt-3 pt-3 border-t text-xs text-slate-400">R$ ${(painel.potencia * 1.26).toFixed(0)} / painel</div>
+                    <div class="mt-3 pt-3 border-t text-sm">
+                        <span class="text-emerald-600 font-bold">R$ ${painel.preco}</span>
+                        <span class="text-xs text-slate-400">/ painel</span>
+                    </div>
                 `;
                 
                 card.onclick = () => selecionarPainel(painel.potencia, card);
@@ -580,11 +528,11 @@
             const kWp = (estado.quantidade * estado.painelEscolhido / 1000).toFixed(1);
             const qtd = estado.quantidade;
             const painelW = estado.painelEscolhido;
-            const geracao = document.getElementById('geracao-mensal').textContent;
-            const economia = document.getElementById('economia-mensal').textContent;
-            const payback = document.getElementById('payback').textContent;
-            const valorAtual = document.getElementById('valor-atual').textContent;
-            const valorNovo = document.getElementById('valor-novo').textContent;
+            const geracao = document.getElementById('geracao-mensal')?.textContent || '0';
+            const economia = document.getElementById('economia-mensal')?.textContent || '0';
+            const payback = document.getElementById('payback')?.textContent || '—';
+            const valorAtual = document.getElementById('valor-atual')?.textContent || '0';
+            const valorNovo = document.getElementById('valor-novo')?.textContent || '0';
             
             let condicaoTexto = "Pós-Limpeza Profissional YWS";
             if (estado.condicao === 1) condicaoTexto = "Residencial Padrão";
@@ -614,7 +562,15 @@ Pode me passar um orçamento detalhado?`;
 
         function inicializar() {
             // Define consumo inicial
-            document.getElementById('consumo').value = estado.consumo;
+            const consumoInput = document.getElementById('consumo');
+            if (consumoInput) {
+                consumoInput.value = estado.consumo;
+                
+                // === CORREÇÃO PRINCIPAL: Listener para atualizar automaticamente ao digitar ===
+                consumoInput.addEventListener('input', function() {
+                    calcularTudoAutomatico();
+                });
+            }
             
             // Cria os cards de painéis
             criarCardsPaineis();
@@ -622,28 +578,32 @@ Pode me passar um orçamento detalhado?`;
             // Seleciona o card inicial (600W)
             setTimeout(() => {
                 const cards = document.querySelectorAll('#painel-cards .panel-card');
-                if (cards.length > 2) cards[2].classList.add('active'); // 600W é o terceiro
-            }, 100);
+                cards.forEach(c => c.classList.remove('active'));
+                if (cards.length > 2) cards[2].classList.add('active');
+            }, 80);
             
             // Seleciona condição inicial (Pós-Limpeza YWS)
-            const condicoes = document.querySelectorAll('.preset-card');
-            if (condicoes.length > 0) condicoes[0].classList.add('active');
+            setTimeout(() => {
+                const condicoes = document.querySelectorAll('.preset-card');
+                condicoes.forEach(c => c.classList.remove('active'));
+                if (condicoes.length > 0) condicoes[0].classList.add('active');
+            }, 100);
+            
+            // === CORREÇÃO: Listeners do slider e input de quantidade ===
+            const slider = document.getElementById('quantidade-slider');
+            const inputQtd = document.getElementById('quantidade-input');
+            
+            if (slider) {
+                slider.addEventListener('input', atualizarQuantidadePeloSlider);
+            }
+            if (inputQtd) {
+                inputQtd.addEventListener('input', atualizarQuantidadePeloInput);
+            }
             
             // Calcula tudo pela primeira vez
             setTimeout(() => {
                 calcularTudoAutomatico();
-            }, 150);
-            
-            // Adiciona listener para Enter no input de consumo
-            document.getElementById('consumo').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    calcularTudoAutomatico();
-                }
-            });
-            
-            // Atualiza ao mudar slider ou input de quantidade
-            document.getElementById('quantidade-slider').addEventListener('input', atualizarQuantidadePeloSlider);
-            document.getElementById('quantidade-input').addEventListener('input', atualizarQuantidadePeloInput();
+            }, 200);
         }
 
         // Inicia tudo
