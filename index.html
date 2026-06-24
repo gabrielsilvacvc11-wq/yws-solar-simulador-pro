@@ -241,11 +241,11 @@
                                 </div>
                                 <input type="range" id="quantidade-slider" 
                                        class="w-full accent-amber-500" 
-                                       min="4" max="45" step="1" value="12"
+                                       min="4" max="1000" step="1" value="12"
                                        oninput="atualizarQuantidadePeloSlider()">
                                 <div class="flex justify-between text-xs text-slate-400 mt-1">
                                     <span>4</span>
-                                    <span>45</span>
+                                    <span>1000</span>
                                 </div>
                             </div>
                             
@@ -398,10 +398,10 @@
 
         const paineisDisponiveis = [
             { potencia: 570, eficiencia: 21.5, nome: "570W Standard" },
-            { potencia: 580, efficiency: 22.1, nome: "580W Plus" },
-            { potencia: 600, efficiency: 22.8, nome: "600W Premium" },
-            { potencia: 620, efficiency: 23.2, nome: "620W High Power" },
-            { potencia: 630, efficiency: 23.5, nome: "630W Ultra" }
+            { potencia: 580, eficiencia: 22.1, nome: "580W Plus" },
+            { potencia: 600, eficiencia: 22.8, nome: "600W Premium" },
+            { potencia: 620, eficiencia: 23.2, nome: "620W High Power" },
+            { potencia: 630, eficiencia: 23.5, nome: "630W Ultra" }
         ];
 
         // ==================== FUNÇÕES PRINCIPAIS ====================
@@ -428,7 +428,7 @@
             const painel = paineisDisponiveis.find(p => p.potencia === estado.painelEscolhido);
             if (painel) {
                 const qtdCalculada = Math.ceil((kWpRecomendado * 1000) / painel.potencia);
-                estado.quantidade = Math.max(4, Math.min(45, qtdCalculada));
+                estado.quantidade = Math.max(4, Math.min(1000, qtdCalculada));
                 
                 // Atualiza slider e input
                 document.getElementById('quantidade-slider').value = estado.quantidade;
@@ -450,7 +450,7 @@
             const painel = paineisDisponiveis.find(p => p.potencia === potencia);
             if (painel && estado.potenciaRecomendada) {
                 const qtd = Math.ceil((estado.potenciaRecomendada * 1000) / painel.potencia);
-                estado.quantidade = Math.max(4, Math.min(45, qtd));
+                estado.quantidade = Math.max(4, Math.min(1000, qtd));
                 
                 document.getElementById('quantidade-slider').value = estado.quantidade;
                 document.getElementById('quantidade-input').value = estado.quantidade;
@@ -467,7 +467,7 @@
 
         function atualizarQuantidadePeloInput() {
             let qtd = parseInt(document.getElementById('quantidade-input').value) || 8;
-            qtd = Math.max(4, Math.min(45, qtd));
+            qtd = Math.max(4, Math.min(1000, qtd));
             estado.quantidade = qtd;
             
             document.getElementById('quantidade-slider').value = qtd;
@@ -547,7 +547,7 @@
                 const painel = paineisDisponiveis.find(p => p.potencia === estado.painelEscolhido);
                 if (painel) {
                     const qtd = Math.ceil((estado.potenciaRecomendada * 1000) / painel.potencia);
-                    estado.quantidade = Math.max(4, Math.min(45, qtd));
+                    estado.quantidade = Math.max(4, Math.min(1000, qtd));
                     document.getElementById('quantidade-slider').value = estado.quantidade;
                     document.getElementById('quantidade-input').value = estado.quantidade;
                 }
@@ -567,7 +567,7 @@
                     <div class="text-3xl font-bold text-slate-800 mb-1">${painel.potencia}W</div>
                     <div class="text-xs text-slate-500 mb-2">${painel.nome}</div>
                     <div class="text-emerald-600 text-xs font-medium">Eficiência ${painel.eficiencia}%</div>
-                    <div class="mt-3 pt-3 border-t text-xs text-slate-400">R$ ${(painel.potencia * 2.1).toFixed(0)} / painel</div>
+                    <div class="mt-3 pt-3 border-t text-xs text-slate-400">R$ ${(painel.potencia * 1.26).toFixed(0)} / painel</div>
                 `;
                 
                 card.onclick = () => selecionarPainel(painel.potencia, card);
@@ -643,7 +643,7 @@ Pode me passar um orçamento detalhado?`;
             
             // Atualiza ao mudar slider ou input de quantidade
             document.getElementById('quantidade-slider').addEventListener('input', atualizarQuantidadePeloSlider);
-            document.getElementById('quantidade-input').addEventListener('input', atualizarQuantidadePeloInput);
+            document.getElementById('quantidade-input').addEventListener('input', atualizarQuantidadePeloInput();
         }
 
         // Inicia tudo
